@@ -1,4 +1,4 @@
-//const User = require('./user');
+const User = require('./user');
 const Product = require('./Product');
 const Category = require('./Category');
 //const Order = require('./order');
@@ -36,6 +36,6 @@ module.exports = {
   Product,
   Category,
  // Order,
- // User,
+  User,
   //ProductOrder
 };
