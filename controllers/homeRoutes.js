@@ -48,7 +48,7 @@ router.get('/category', async (req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/category/:id', async (req, res) => {
   try {
     const cateData = await Category.findByPk(req.params.id,{
       include: [
