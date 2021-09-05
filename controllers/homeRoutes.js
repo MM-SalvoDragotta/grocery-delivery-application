@@ -106,10 +106,14 @@ router.get('/product/:id', async (req, res) => {
   try {
     const productData = await Product.findByPk(req.params.id,{});
 
+    const cateData = await Category.findAll();
+
     const product = productData.get({ plain: true });
+    const categories = cateData.map((cate) => cate.get({ plain: true }));
   
     res.render('product', { 
-      ...product, 
+      ...product,
+      categories, 
       logged_in: req.session.logged_in,
     });
   } catch (err) {

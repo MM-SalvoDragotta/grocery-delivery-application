@@ -14,16 +14,22 @@
         <input class="form-input" type="text" id="stock" value="{{stock}}"/>
       </div>
       <div class="form-group">
-        <label for="catergory_">product catergory:</label>
-        <input class="form-input" type="text" id="catergory" value="{{category_id}}"/>
+        <label for="category">Choose a Category:</label>
+        <input list="category-type" id="category" name="category"/>
+          <datalist id="category-type">
+            {{#each categories as |category|}}
+            <option value="{{category.id}}">{{category.category_name}}</option>
+            {{/each}}
+          </datalist>
       </div>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="special">
         <label class="form-check-label" for="special">Special?</label>
      </div> 
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
+        <button class="btn btn-primary" type="submit">Update</button>
       </div>
     </form>
   </div>
 </div>
+<script src="/js/product.js"></script>

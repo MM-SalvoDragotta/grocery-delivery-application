@@ -8,14 +8,14 @@
         <h6 class="card-subtitle mb-2 text-light">Price {{product.price}}</h6>
     </div>
     <div class="card-body">
-        <p class="card-text">$ {{product.price}}</p>
-        <p class="card-text">No {{product.stock}} in stock</p>
+        <p class="card-text">{{product.price}}</p>
+        <p class="card-text">{{product.stock}} in stock</p>
         {{#if product.isSpecial}}
-        <p class="card-text">$ Special</p>
+        <p class="card-text">Special</p>
         {{else}}
-        <p class="card-text">$ Not special</p>
+        <p class="card-text">Not special</p>
         {{/if}}
-        <p class="card-text">$ {{product.category_id}}</p>      
+        <p class="card-text">{{product.category.category_name}}</p>      
     </div>
 </div>
 </div>
