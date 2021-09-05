@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-6">
+    <form class="form update-form" id="{{id}}">
+      <div class="form-group">
+        <label for="name">product name:</label>
+        <input class="form-input" type="text" id="name" value="{{name}}"/>
+      </div>
+      <div class="form-group">
+        <label for="price">product price:</label>
+        <input class="form-input" type="text" id="price" value="{{price}}"/>
+      </div>
+      <div class="form-group">
+        <label for="stock">product stock:</label>
+        <input class="form-input" type="text" id="stock" value="{{stock}}"/>
+      </div>
+      <div class="form-group">
+        <label for="category">Choose a Category:</label>
+        <input list="category-type" id="category" name="category"/>
+          <datalist id="category-type">
+            {{#each categories as |category|}}
+            <option value="{{category.id}}">{{category.category_name}}</option>
+            {{/each}}
+          </datalist>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="special">
+        <label class="form-check-label" for="special">Special?</label>
+     </div> 
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="/js/product.js"></script>

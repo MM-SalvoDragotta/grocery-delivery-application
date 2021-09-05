@@ -1,16 +1,23 @@
 <!-- Loop over each object in the posts array -->
+<div class="row">
 {{#each products as |product| }}
+<div class="col-md-6">
 <div class="card mb-5">
     <div class="card-header bg-secondary">
         <h4 class="card-title"><a class="text-white" href="/product/{{product.id}}">{{product.name}}</a></h4>
         <h6 class="card-subtitle mb-2 text-light">Price {{product.price}}</h6>
     </div>
     <div class="card-body">
-        <p class="card-text">$ {{product.price}}</p>
-        <p class="card-text">No {{product.stock}} in stock</p>
-        <p class="card-text">$ {{product.isSpecial}}</p>
-        <p class="card-text">$ {{product.category_id}}</p>      
+        <p class="card-text">{{product.price}}</p>
+        <p class="card-text">{{product.stock}} in stock</p>
+        {{#if product.isSpecial}}
+        <p class="card-text">Special</p>
+        {{else}}
+        <p class="card-text">Not special</p>
+        {{/if}}
+        <p class="card-text">{{product.category.category_name}}</p>      
     </div>
 </div>
-
+</div>
 {{/each}}
+</div>
