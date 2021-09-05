@@ -6,12 +6,12 @@ router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const productData = await Product.findAll({
-      // include: [
-      //   {
-      //     model: User,
-      //     attributes: ['name'],
-      //   },
-      // ],
+      include: [
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
+      ],
     });
 
     // Serialize data so the template can read it
