@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
   });
 
 // get one product
-router.get('/:id',  async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     // find a single product by its `id`
     // be sure to include its associated Category
     try {
@@ -52,7 +52,7 @@ router.get('/:id',  async (req, res) => {
   });
   
   // create new product
-  router.post('/', async (req, res) => {
+  router.post('/', withAuth, async (req, res) => {
     /* req.body should look like this...
       {
         name: "Bread",
@@ -80,7 +80,7 @@ router.get('/:id',  async (req, res) => {
       });
   
   // update product
-  router.put('/:id', async (req, res) => {
+  router.put('/:id', withAuth, async (req, res) => {
     // update product data
     try {
       const product = await Product.update(req.body, {
@@ -101,7 +101,7 @@ router.get('/:id',  async (req, res) => {
   }
 });     
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     // delete one product by its `id` value
     try {
       const product = await Product.destroy({
