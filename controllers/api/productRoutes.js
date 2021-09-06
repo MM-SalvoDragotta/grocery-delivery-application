@@ -86,7 +86,7 @@ router.get('/:id', withAuth, async (req, res) => {
       const product = await Product.update(req.body, {
           where: {
             id: req.params.id,
-            // user_id: req.session.user_id,
+            user_id: req.session.user_id,
           },
         });
         if (!product) {
@@ -107,7 +107,7 @@ router.delete('/:id', withAuth, async (req, res) => {
       const product = await Product.destroy({
         where: {
           id: req.params.id,
-          // user_id: req.session.user_id,
+          user_id: req.session.user_id,
         },
       });
       if (!product) {
