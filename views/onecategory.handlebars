@@ -1,10 +1,19 @@
 <div class="row">
-<h2 class="col-12">SPECIALS</h2>
-
+<h2 class="col-12">All Products</h2>
+<div class="col-3 prolist">
+  <h3>category list</h3>
+  <ul class="">
+  {{#each categories as |category| }}
+  <li class=""><a href="/category/{{category.id}}">{{category.category_name}}</a></li>
+  {{/each}}
+  </ul>
+</div>
+<div class="row col-9 prolist">
+  <h3 class="col-12">{{category_name}}</h3>
 {{#each products as |product| }}
 <div class="col-md-6">
 <div class="card mb-5">
-    <div class="card-header bg-grey">
+    <div class="card-header bg-secondary">
         <h4 class="card-title"><a class="text-white" href="/product/{{product.id}}">{{product.name}}</a></h4>
         <h6 class="card-subtitle mb-2 text-light">Price {{product.price}}</h6>
     </div>
@@ -16,5 +25,5 @@
 </div>
 </div>
 {{/each}}
-
+</div>
 </div>
