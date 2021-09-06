@@ -16,14 +16,22 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    price:{
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+    },
     stock: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
     },
     isSpecial: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
+    },
+    image_url:{
+      type: DataTypes.STRING,
     },
     category_id: {
       type: DataTypes.INTEGER,

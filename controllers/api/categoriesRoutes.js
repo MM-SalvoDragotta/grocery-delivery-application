@@ -1,0 +1,81 @@
+const router = require('express').Router();
+const { Category , Product} = require('../../models');
+//const withAuth = require('../../utils/auth');
+
+router.get('/', async (req, res) => {
+  try {
+    // Get all categories and JOIN with user data
+    const catData = await Category.findAll({
+      include: [
+        {
+          model: Product,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    // Serialize data so the template can read it
+    // const categories = catData.map((cat) => cat.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.status(200).json(catData);
+    // res.render('homepage', { 
+    //   products, 
+    //   logged_in: req.session.logged_in 
+    // });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const newCategory = await Category.create(req.body);
+
+    res.status(200).json(newCategory);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.put('/:id', async (req, res) => {
+  try {
+    const categoryData = await Category.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!categoryData[0]) {
+      res.status(404).json({ message: 'No category with this id!' });
+      return;
+    }
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const categoryData = await Category.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!categoryData) {
+      res.status(404).json({ message: 'No category found with this id!' });
+      return;
+    }
+
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;
+
+
