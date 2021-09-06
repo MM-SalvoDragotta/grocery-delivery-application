@@ -1,3 +1,4 @@
+{{#if logged_in}}
 <div class="row">
   <div class="col-md-6">
     <form class="form update-form" id="{{id}}">
@@ -34,3 +35,8 @@
   </div>
 </div>
 <script src="/js/product.js"></script>
+{{else}}  
+  <script type="text/javascript">
+    window.location.href = "/login";
+</script>
+{{/if}}
