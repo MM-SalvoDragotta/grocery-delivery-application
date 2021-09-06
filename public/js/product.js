@@ -12,7 +12,7 @@ const updateProduct = async (event) => {
     isSpecial = false
   }
   const dataId = document.querySelector('.update-form').getAttribute('id');
-    const response = await fetch(`/api/product/${dataId}`, {
+    const response = await fetch(`/api/products/${dataId}`, {
       method: 'PUT',
       body: JSON.stringify({ name, price ,stock , category_id, isSpecial}),
       headers: {
@@ -23,11 +23,28 @@ const updateProduct = async (event) => {
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert('Failed to create create');
+      alert('Failed');
     }
   
 };
+const deleteProduct = async (event) => {
+  event.preventDefault();
+  
+  const dataId = document.querySelector('.update-form').getAttribute('id');
+    const response = await fetch(`/api/products/${dataId}`, {
+      method: 'DELETE',
+    });
 
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert('Failed ');
+    }
+  
+};
 document
   .querySelector('.update-form')
   .addEventListener('submit', updateProduct);
+  document
+  .querySelector('#delete')
+  .addEventListener('click', deleteProduct);

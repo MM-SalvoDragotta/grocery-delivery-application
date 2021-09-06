@@ -93,13 +93,17 @@ router.get('/category/:id', async (req, res) => {
 
 router.get('/product/:id', async (req, res) => {
   try {
-    const productData = await Product.findByPk(req.params.id,{});
+    const productData = await Product.findByPk(req.params.id,{
+      include:{
+        model: Category
+      }
+    });
 
     const cateData = await Category.findAll();
 
     const product = productData.get({ plain: true });
     const categories = cateData.map((cate) => cate.get({ plain: true }));
-  
+    console.log(product);
     res.render('product', { 
       ...product,
       categories, 

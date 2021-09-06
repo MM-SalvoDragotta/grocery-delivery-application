@@ -15,8 +15,9 @@
         <input class="form-input" type="text" id="stock" value="{{stock}}"/>
       </div>
       <div class="form-group">
+        <p>current category:{{category.category_name}}</p>
         <label for="category">Choose a Category:</label>
-        <input list="category-type" id="category" name="category"/>
+        <input list="category-type" id="category" name="category" value="{{category.id}}"/>
           <datalist id="category-type">
             {{#each categories as |category|}}
             <option value="{{category.id}}">{{category.category_name}}</option>
@@ -29,14 +30,10 @@
      </div> 
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Update</button>
-        <button class="btn btn-primary" type="button">Delete</button>
+        <button class="btn btn-primary" type="button" id="delete">Delete</button>
       </div>
     </form>
   </div>
 </div>
 <script src="/js/product.js"></script>
-{{else}}  
-  <script type="text/javascript">
-    window.location.href = "/login";
-</script>
 {{/if}}

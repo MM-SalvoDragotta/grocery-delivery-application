@@ -2,33 +2,6 @@ const router = require('express').Router();
 const { Category , Product} = require('../../models');
 //const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
-  try {
-    // Get all categories and JOIN with user data
-    const catData = await Category.findAll({
-      include: [
-        {
-          model: Product,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    // Serialize data so the template can read it
-    // const categories = catData.map((cat) => cat.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.status(200).json(catData);
-    // res.render('homepage', { 
-    //   products, 
-    //   logged_in: req.session.logged_in 
-    // });
-
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.post('/', async (req, res) => {
   try {
     const newCategory = await Category.create(req.body);
