@@ -48,27 +48,18 @@ router.get('/login', (req, res) => {
 
 router.get('/category', async (req, res) => {
   try {
-    const cateData = await Category.findAll({
-      include: [
-        {
-          model: Product,
-          attributes: [
-            'name',
-            'price',
-            'stock',
-            'isSpecial',
-          ],
-        },
-      ],
-    });
+    const cateData = await Category.findAll({});
+    const productData = await Product.findAll({});
     
     const categories = cateData.map((cate) => cate.get({ plain: true }));
+    const products = productData.map((pro) => pro.get({ plain: true }));
 
-    res.status(200).json(categories);
-    // res.render('', { 
-    //   categories,
-    //   logged_in: req.session.logged_in, 
-    // });
+    console.log(categories)
+    res.render('allproduct', { 
+      categories,
+      products,
+      logged_in: req.session.logged_in, 
+    });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -76,27 +67,25 @@ router.get('/category', async (req, res) => {
 
 router.get('/category/:id', async (req, res) => {
   try {
-    const cateData = await Category.findByPk(req.params.id,{
+    const cateData = await Category.findAll({});
+
+    const onecateData = await Category.findByPk(req.params.id,{
       include: [
         {
           model: Product,
-          attributes: [
-            'name',
-            'price',
-            'stock',
-            'isSpecial',
-          ],
         },
       ],
     });
 
-    const category = cateData.get({ plain: true });
+    const categories = cateData.map((cate) => cate.get({ plain: true }));
+    const onecategory = onecateData.get({ plain: true });
 
-    res.status(200).json(category);
-    // res.render('', { 
-    //   category, 
-    //   logged_in: req.session.logged_in,
-    // });
+    console.log(onecategory);
+    res.render('onecategory', { 
+      ...onecategory,
+      categories, 
+      logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
