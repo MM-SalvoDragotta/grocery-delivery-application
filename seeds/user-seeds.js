@@ -9,11 +9,14 @@ const userData = [
     {
         "name": "Luke",
         "email": "luke@hotmail.com",
-        "password": "password12345"
+        "password": "password1234"
     }
 ]
 
 
-const seedProducts = () => User.bulkCreate(userData);
+const seedProducts = () => User.bulkCreate(userData,{
+    individualHooks: true,
+    returning: true,
+  });
 
 module.exports = seedProducts;
