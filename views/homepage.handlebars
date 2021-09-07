@@ -2,6 +2,7 @@
 <h2 class="col-12">SPECIALS</h2>
 
 {{#each products as |product| }}
+{{#if product.isSpecial}}
 <div class="col-md-6">
 <div class="card mb-5">
     <div class="card-header bg-grey">
@@ -11,10 +12,10 @@
     <div class="card-body">
         <p class="card-text">{{product.price}}</p>
         <p class="card-text">{{product.stock}} in stock</p>
-        <p class="card-text">{{product.category.category_name}}</p>      
+        <p class="card-text">{{product.category.category_name}}</p>    
     </div>
 </div>
 </div>
+{{/if}}
 {{/each}}
-
 </div>

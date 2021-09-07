@@ -1,55 +1,6 @@
 const router = require('express').Router();
 const { Product , Category} = require('../../models');
 const withAuth = require('../../utils/auth');
-
-router.get('/', async (req, res) => {
-    try {
-      // Get all projects and JOIN with user data
-      const productData = await Product.findAll({
-        include: [
-          {
-            model: Category,
-            attributes: ['category_name'],
-          },
-        ],
-      });
-  
-      // Serialize data so the template can read it
-      const products = productData.map((product) => product.get({ plain: true }));
-  
-      // Pass serialized data and session flag into template
-      res.status(200).json(products);
-      res.render('homepage', { 
-        products, 
-        logged_in: req.session.logged_in 
-      });
-
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
-
-// get one product
-router.get('/:id', withAuth, async (req, res) => {
-    // find a single product by its `id`
-    // be sure to include its associated Category
-    try {
-      const productByID = await Product.findByPk(req.params.id, {
-        include: [
-          { model: Category }          
-        ],
-      });
-      if (!productByID) {
-        res.status(404).json(
-          { message: `No Product with id ${req.params.id} found!` }
-        );
-        return;
-      }
-      res.status(200).json(productByID);
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
   
   // create new product
   router.post('/', withAuth, async (req, res) => {
@@ -65,7 +16,6 @@ router.get('/:id', withAuth, async (req, res) => {
    try {    
         const newProduct = await Product.create({
             ...req.body,
-            user_id: req.session.user_id,
         });
         if (!newProduct) {
             res.status(404).json(
@@ -80,13 +30,12 @@ router.get('/:id', withAuth, async (req, res) => {
       });
   
   // update product
-  router.put('/:id', withAuth, async (req, res) => {
+  router.put('/:id', withAuth , async (req, res) => {
     // update product data
     try {
       const product = await Product.update(req.body, {
           where: {
             id: req.params.id,
-            user_id: req.session.user_id,
           },
         });
         if (!product) {
@@ -107,7 +56,6 @@ router.delete('/:id', withAuth, async (req, res) => {
       const product = await Product.destroy({
         where: {
           id: req.params.id,
-          user_id: req.session.user_id,
         },
       });
       if (!product) {
