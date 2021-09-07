@@ -1,11 +1,17 @@
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
+ul {
+  list-style-type: none;
+  padding: 0;
+}
 
 .prolist{
   border: 2px solid black;
 }
-
+.card-header{
+  min-height: 120px;
+}
 .no-button {
   background: none;
   border: none;

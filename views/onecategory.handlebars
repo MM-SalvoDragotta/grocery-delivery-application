@@ -10,11 +10,12 @@
 </div>
 <div class="row col-9 prolist">
   <h3 class="col-12">{{category_name}}</h3>
+{{#if logged_in}}
 {{#each products as |product| }}
-<div class="col-md-6">
-<div class="card mb-5">
+<div class="col-lg-6">
+  <div class="card mb-5">
     <div class="card-header bg-secondary">
-        <h4 class="card-title"><a class="text-white" href="/product/{{product.id}}">{{product.name}}</a></h4>
+        <h5 class="card-title"><a class="text-white" href="/product/{{product.id}}">{{product.name}}</a></h5>
         <h6 class="card-subtitle mb-2 text-light">Price {{product.price}}</h6>
     </div>
     <div class="card-body">
@@ -22,8 +23,27 @@
         <p class="card-text">{{product.stock}} in stock</p>
         <p class="card-text">{{product.category.category_name}}</p>      
     </div>
-</div>
+    <button class="btn btn-sm btn-danger" type="button"  data-delete="{{product.id}}">Delete</button>
+  </div>
 </div>
 {{/each}}
+{{else}}
+{{#each products as |product| }}
+<div class="col-lg-6">
+  <div class="card mb-5">
+    <div class="card-header bg-secondary">
+        <h5 class="card-title"><a class="text-white" href="/product/{{product.id}}">{{product.name}}</a></h5>
+        <h6 class="card-subtitle mb-2 text-light">Price {{product.price}}</h6>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{product.price}}</p>
+        <p class="card-text">{{product.stock}} in stock</p>
+        <p class="card-text">{{product.category.category_name}}</p>      
+    </div>
+  </div>
+</div>
+{{/each}}
+{{/if}} 
 </div>
 </div>
+<script src="/js/delete.js"></script>
