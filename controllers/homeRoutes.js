@@ -100,5 +100,19 @@ router.get('/product/:id',withAuth , async (req, res) => {
   }
 });
 
+router.get('/createproduct',withAuth , async (req, res) => {
+  try {
+    const cateData = await Category.findAll();
+
+    const categories = cateData.map((cate) => cate.get({ plain: true }));
+
+    res.render('createproduct', { 
+      categories, 
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

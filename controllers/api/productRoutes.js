@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product , Category} = require('../../models');
+const { Product } = require('../../models');
 const withAuth = require('../../utils/auth');
   
   // create new product
