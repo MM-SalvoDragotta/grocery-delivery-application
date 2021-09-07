@@ -2,6 +2,7 @@
 <h2 class="col-12">SPECIALS</h2>
 
 {{#each products as |product| }}
+{{#if product.isSpecial}}
 <div class="col-md-6">
 <div class="card mb-5">
     <div class="card-header bg-grey">
@@ -15,6 +16,7 @@
     </div>
 </div>
 </div>
+{{/if}}
 {{/each}}
 
 </div>
