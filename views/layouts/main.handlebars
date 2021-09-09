@@ -13,8 +13,9 @@
 
 <body class="bg-white">
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>        
+    <div class="header justify-center">
+    <header class="align-center just p-2">
+      <h1 class="">        
         <a href="/">Welcome To Food Store</a>
       </h1>
       <nav>
@@ -22,6 +23,7 @@
         <a href="/category">Products By Category</a> |
         {{#if logged_in}}
         <a href="/">Product On Special</a> |
+        <a href="/createcategory">Create New Category</a> |
         <a href="/createproduct">Create New Product</a> |
         <button class="no-button" id="logout">Logout</button>
         {{else}}
@@ -29,6 +31,7 @@
         {{/if}}
       </nav>
     </header>
+    </div>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}

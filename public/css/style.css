@@ -141,3 +141,19 @@ font-size: 1.2rem;
   height: 20px;
   display: inline-block;
 } */
+header{
+  text-align: center;
+}
+
+@media screen and (min-width: 1130px) {
+  header{
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+}
+@media screen and (max-width: 1130px) {
+  .header{
+    display: flex !important;
+    
+  }
+}

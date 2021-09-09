@@ -50,7 +50,7 @@ const response = await fetch(`/api/products/${dataId}`, {
       },
     });
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/category');
     } else {
       alert('Failed');
     }  

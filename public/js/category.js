@@ -1,29 +1,8 @@
-const createCategory = async (event) => {
-  event.preventDefault();
-  const category_name = document.querySelector('put name element here').value.trim();
- 
-  if (category_name) {
-    const response = await fetch(`/api/categories`, {
-      method: 'POST',
-      body: JSON.stringify({ category_name }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (response.ok) {
-      document.location.replace('/');
-    } else {
-      alert('Failed to create create');
-    }
-  }
-};
-
 const updateCategory = async (event) => {
   event.preventDefault();
   
-  const category_name = document.querySelector('put name element here').value.trim();
-  const dataId = document.querySelector('put id element here').getAttribute('data-id');
+  const category_name = document.querySelector('#cate-name').value.trim();
+  const dataId = document.querySelector('.cate-input').getAttribute('data-cate');
   
   if (category_name) {
     const response = await fetch(`/api/categories/${dataId}`, {
@@ -35,7 +14,7 @@ const updateCategory = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/');
+      document.location.reload();
     } else {
       alert('Failed to create create');
     }
@@ -44,15 +23,23 @@ const updateCategory = async (event) => {
 
 const deleteCategory = async (event) => {
   event.preventDefault();
-  const dataId = document.querySelector('put id element here').getAttribute('data-id');
+  const dataId = document.querySelector('.cate-input').getAttribute('data-cate');
   
   const response = await fetch(`/api/categories/${dataId}`, {
     method: 'DELETE',
   });
 
   if (response.ok) {
-    document.location.replace('/');
+    document.location.replace('/category');
   } else {
     alert('Failed to create create');
   }
 };
+
+document
+  .querySelector("#cate-up")
+  .addEventListener("click",updateCategory);
+
+document
+  .querySelector("#cate-del")
+  .addEventListener("click",deleteCategory);
