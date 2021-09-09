@@ -23,7 +23,12 @@
                 </span>
             </span></p>       
                 {{#if ../logged_in}}<p class="card-text"><span class="text-dark">{{product.stock}}</span> in stock</p>{{/if}}            
-            <p class="card-text">Category : {{product.category.category_name}}</p>    
+            <p class="card-text">Category : {{product.category.category_name}}</p>  
+                    {{#if ../logged_in}} 
+          <div class="text-center" >
+            <button class="btn btn-sm btn-danger" type="button"  data-delete="{{product.id}}">Remove From Database</button>
+          </div>        
+        {{/if}}  
         </div>
     </div>
 </div>
