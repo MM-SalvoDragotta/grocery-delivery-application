@@ -1,9 +1,10 @@
 <div class="row">
 <h2 class="col-12">SPECIALS</h2>
+{{!-- • You don't need to surround the each with an if, each...else works.
+• If you try to access user within the each, you'll actually be trying to access posts.user. You can access the parent context using ../. --}}
 
 {{#each products as |product| }}
-{{#if product.isSpecial}}
-    
+{{#if product.isSpecial}}    
 <div class="col-md-3">
     <div class="card mb-5">
         <div class="card-header bg-yellow">
@@ -21,7 +22,7 @@
                 <span class="dollar-value"> {{product.price}} </span>
                 </span>
             </span></p>       
-                {{#if logged_in}}<p class="card-text"><span class="text-dark">{{product.stock}}</span> in stock</p>{{/if}}            
+                {{#if ../logged_in}}<p class="card-text"><span class="text-dark">{{product.stock}}</span> in stock</p>{{/if}}            
             <p class="card-text">Category : {{product.category.category_name}}</p>    
         </div>
     </div>

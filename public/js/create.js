@@ -31,6 +31,8 @@ const createproduct = async (event) => {
   }
 };
 
+//https://stackoverflow.com/questions/6926016/how-can-i-save-a-base64-encoded-image-to-disk
+//https://stackoverflow.com/questions/36280818/how-to-convert-file-to-base64-in-javascript
 const toBase64 = file => new Promise((resolve, reject) => {
   const reader = new FileReader();
   reader.readAsDataURL(file);

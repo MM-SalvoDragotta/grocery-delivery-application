@@ -43,6 +43,16 @@ font-size: 1.2rem;
   font-weight: bold !important;  
 }
 
+.card-title{
+  margin: 0 0 5px;
+  height: 56px;
+}
+
+.cat {
+  margin: 0 0 5px;
+  padding-top: 5px ;
+  font-size: 1.2rem;
+}
 
 /* @media (min-width: 32.5em) {
 .product-pricing-info {
