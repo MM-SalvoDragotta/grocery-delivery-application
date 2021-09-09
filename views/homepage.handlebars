@@ -3,18 +3,28 @@
 
 {{#each products as |product| }}
 {{#if product.isSpecial}}
-<div class="col-md-6">
-<div class="card mb-5">
-    <div class="card-header bg-grey">
-        <h4 class="card-title"><a class="text-white" href="/product/{{product.id}}">{{product.name}}</a></h4>
-        <h6 class="card-subtitle mb-2 text-light">Price {{product.price}}</h6>
+    
+<div class="col-md-3">
+    <div class="card mb-5">
+        <div class="card-header bg-yellow">
+             <h3 class="text-center text-card-header">SPECIAL</h3>      
+        </div>
+        <div class="card-body">
+            <div class="product-image">        
+                {{!-- <img alt='{{product.name}}'  aria-hidden="true" role="presentation" src="/images/1631102544092.jpeg"> --}}
+                <img alt="{{product.name}}"  aria-hidden="true" role="presentation" src="{{product.image_url}}">
+            </div>
+            <h4 class="card-title"><a class="text-dark" href="/product/{{product.id}}">{{product.name}}</a></h4> 
+            <p><span class="product-pricing-info card-subtitle mb-2 text-light">
+                <span class="price-container"></span> 
+                <span class="currency-sign"> $ </span>
+                <span class="dollar-value"> {{product.price}} </span>
+                </span>
+            </span></p>       
+                {{#if logged_in}}<p class="card-text"><span class="text-dark">{{product.stock}}</span> in stock</p>{{/if}}            
+            <p class="card-text">Category : {{product.category.category_name}}</p>    
+        </div>
     </div>
-    <div class="card-body">
-        <p class="card-text">{{product.price}}</p>
-        <p class="card-text">{{product.stock}} in stock</p>
-        <p class="card-text">{{product.category.category_name}}</p>    
-    </div>
-</div>
 </div>
 {{/if}}
 {{/each}}
