@@ -6,29 +6,49 @@ const updateProduct = async (event) => {
   const price = document.querySelector('#price').value.trim();
   const stock = document.querySelector('#stock').value.trim();
   const category_id = document.querySelector('#category').value.trim();
-  const file = document.querySelector('#upload-file').files[0];
+  const file = document.querySelector('#upload-file').files[0] || undefined;
+  let product = {}
 
   if(document.querySelector('#special').checked)
   {
     isSpecial = true
     special.setAttribute('checked', 'checked');
-  } else{
+  }else{
     isSpecial = false
     special.checked = false
     special.removeAttribute('checked');  
   }
 
-  const file64 =  await toBase64(file);
-
   const dataId = document.querySelector('.update-form').getAttribute('id');
-    const response = await fetch(`/api/products/${dataId}`, {
+
+  if (file!=undefined) {
+    const file64 =  await toBase64(file);
+    product = {
+      name,
+      price ,
+      stock , 
+      category_id, 
+      isSpecial , 
+      file64
+    }
+  }else {
+   product = {
+        name,
+        price ,
+        stock , 
+        category_id, 
+        isSpecial 
+      }
+    }
+     
+
+const response = await fetch(`/api/products/${dataId}`, {
       method: 'PUT',
-      body: JSON.stringify({ name, price ,stock , category_id, isSpecial , file64}),
+      body: JSON.stringify(product),
       headers: {
         'Content-Type': 'application/json',
       },
     });
-
     if (response.ok) {
       document.location.replace('/category');
     } else {
