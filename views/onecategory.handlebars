@@ -1,10 +1,10 @@
 <div class="row">
-<h2 class="col-12">All Products</h2>
+<h2 class="col-12">Product Categories</h2>
 <div class="col-3 prolist">
-  <h3>category list</h3>
+  {{!-- <h3>category list</h3> --}}
   <ul class="">
   {{#each categories as |category| }}
-  <li class=""><a href="/category/{{category.id}}">{{category.category_name}}</a></li>
+  <li class="cat"><a href="/category/{{category.id}}">{{category.category_name}}</a></li>
   {{/each}}
   </ul>
 </div>
