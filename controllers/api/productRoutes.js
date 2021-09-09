@@ -52,8 +52,24 @@ router.post('/', withAuth, async (req, res) => {
 // update product
 router.put('/:id', withAuth , async (req, res) => {
   // update product data
+  const matched = req.body.file64.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+    const fileType = matched[1].replace("image/", "");
+    const base64 = matched[2];        
+    const image_url_dot = `./public/images/${Date.now()}.${fileType}`;
+    const image_url = `/images/${Date.now()}.${fileType}`;
+    // const image_url = image_url_dot.substring(1)
+
+    fs.writeFile(image_url_dot , base64, 'base64', function(err) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("File Uploaded");
+      }          
+    });
+
   try {
-    const product = await Product.update(req.body, {
+    const product = await Product.update({
+      ...req.body, image_url}, {
         where: {
           id: req.params.id,
         },
@@ -90,18 +106,5 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
   });
 
-  // router.post ('/upload' , withAuth, upload.single("product-file") , async (req, res) => {
-  //   try {
-  //   await console.log(JSON.stringify(req.file))
-  //   var response = '<a href="/">Home</a><br>'
-  //   response += "Files uploaded successfully.<br>"
-  //   response += `<img src="${req.file.path}" /><br>`
-  //   return res.send(response)
-    
-  //   res.status(200).json(product);
-  // } catch (err) {
-  //   res.status(500).json(err);
-  // }
-  // });
-  
+ 
   module.exports = router;

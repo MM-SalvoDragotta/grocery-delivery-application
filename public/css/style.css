@@ -54,6 +54,13 @@ font-size: 1.2rem;
   font-size: 1.2rem;
 }
 
+.text-card-low {
+  color:red !important;
+}
+
+.bg-red {
+  background-color:red !important;
+}
 /* @media (min-width: 32.5em) {
 .product-pricing-info {
     display: -webkit-box;

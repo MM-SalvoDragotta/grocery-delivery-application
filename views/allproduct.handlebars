@@ -3,9 +3,9 @@
 <div class="col-3 prolist">
   {{!-- <h3>Product By Category</h3> --}}
   <ul class="">
-  {{#each categories as |category| }}
-    <li class="cat"><a href="/category/{{category.id}}">{{category.category_name}}</a></li>
-  {{/each}}
+    {{#each categories as |category| }}
+      <li class="cat"><a href="/category/{{category.id}}">{{category.category_name}}</a></li>
+    {{/each}}
   </ul>
 </div>
 <div class="row col-9 prolist">
@@ -13,16 +13,36 @@
 {{#each products as |product| }}
 <div class="col-lg-6">
   <div class="card mb-5">
-    <div class="card-header bg-secondary">
-        <h5 class="card-title"><a class="text-white" href="/product/{{product.id}}">{{product.name}}</a></h5>
-        <h6 class="card-subtitle mb-2 text-light">Price {{product.price}}</h6>
-    </div>
+    {{#if product.isSpecial}}
+      <div class="card-header bg-yellow">      
+        <h3 class="text-center text-card-header">SPECIAL</h3> 
+      </div>
+    {{else}}
+      <div class="card-header bg-red">
+        <h3 class="text-center text-card">EVERY DAY LOW PRICE</h3> 
+      </div>         
+    {{/if}}   
     <div class="card-body">
-        <p class="card-text">{{product.price}}</p>
-        <p class="card-text">{{product.stock}} in stock</p>
-        <p class="card-text">{{product.category.category_name}}</p>      
+        <div class="product-image">        
+          <img alt="{{product.name}}"  aria-hidden="true" role="presentation" src="{{product.image_url}}">
+        </div>
+        <h4 class="card-title"><a class="text-dark" href="/product/{{product.id}}">{{product.name}}</a></h4> 
+        <p><span class="product-pricing-info card-subtitle mb-2 text-light">
+            <span class="price-container"></span> 
+            <span class="currency-sign"> $ </span>
+            <span class="dollar-value"> {{product.price}} </span>
+            </span>
+        </p>       
+        {{#if ../logged_in}}
+          <p class="card-text"><span class="text-dark">{{product.stock}}</span> in stock</p>
+        {{/if}}            
+          <p class="card-text">Category : {{product.category.category_name}} </p> 
+        {{#if ../logged_in}} 
+          <div class="text-center" >
+            <button class="btn btn-sm btn-danger" type="button"  data-delete="{{product.id}}">Remove From Database</button>
+          </div>        
+        {{/if}}
     </div>
-    {{#if ../logged_in}} <button class="btn btn-sm btn-danger" type="button"  data-delete="{{product.id}}">Delete</button>{{/if}}
   </div>
 </div>
 {{/each}}
