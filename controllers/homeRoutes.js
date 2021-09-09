@@ -37,7 +37,14 @@ router.get('/login', (req, res) => {
 router.get('/category', async (req, res) => {
   try {
     const cateData = await Category.findAll({});
-    const productData = await Product.findAll({});
+    const productData = await Product.findAll({
+      include: [
+        {
+          model: Category,
+          attributes: ['category_name'],
+        },
+      ],
+    });
     
     const categories = cateData.map((cate) => cate.get({ plain: true }));
     const products = productData.map((pro) => pro.get({ plain: true }));
@@ -108,6 +115,16 @@ router.get('/createproduct',withAuth , async (req, res) => {
 
     res.render('createproduct', { 
       categories, 
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/createcategory',withAuth , async (req, res) => {
+  try {
+    res.render('createcategory', { 
       logged_in: req.session.logged_in,
     });
   } catch (err) {
