@@ -1,37 +1,37 @@
 <div class="row">
-<h2 class="col-12">SPECIALS</h2>
-{{!-- • You don't need to surround the each with an if, each...else works.
-• If you try to access user within the each, you'll actually be trying to access posts.user. You can access the parent context using ../. --}}
-
-{{#each products as |product| }}
-{{#if product.isSpecial}}    
-<div class="col-md-6 col-lg-4">
-    <div class="card mb-5">
-        <div class="card-header bg-yellow">
-             <h3 class="text-center text-card-header">SPECIAL</h3>      
-        </div>
-        <div class="card-body">
-            <div class="product-image">        
-                {{!-- <img alt='{{product.name}}'  aria-hidden="true" role="presentation" src="/images/1631102544092.jpeg"> --}}
-                <img alt="{{product.name}}"  aria-hidden="true" role="presentation" src="{{product.image_url}}">
+    <h2 class="col-12">SPECIALS</h2>
+    {{!-- • You don't need to surround the each with an if, each...else works.
+    • If you try to access user within the each, you'll actually be trying to access posts.user. You can access the parent context using ../. --}}
+    {{#each products as |product| }}
+    {{#if product.isSpecial}}    
+    <div class="col-md-6 col-lg-4">
+        <div class="card mb-5">
+            <div class="card-header bg-yellow">
+                <h3 class="text-center text-card-header">SPECIAL</h3>      
             </div>
-            <h4 class="card-title"><a class="text-dark" href="/product/{{product.id}}">{{product.name}}</a></h4> 
-            <p><span class="product-pricing-info card-subtitle mb-2 text-light">
-                <span class="price-container"></span> 
-                <span class="currency-sign"> $ </span>
-                <span class="dollar-value"> {{product.price}} </span>
-                </span>
-            </span></p>       
+            <div class="card-body">
+                <div class="product-image">        
+                    {{!-- <img alt='{{product.name}}'  aria-hidden="true" role="presentation" src="/images/1631102544092.jpeg"> --}}
+                    <img alt="{{product.name}}"  aria-hidden="true" role="presentation" src="{{product.image_url}}">
+                </div>
+                <h4 class="card-title"><a class="text-dark" href="/product/{{product.id}}">{{product.name}}</a></h4> 
+                <p><span class="product-pricing-info card-subtitle mb-2 text-light">
+                    <span class="price-container"></span> 
+                    <span class="currency-sign"> $ </span>
+                    <span class="dollar-value"> {{product.price}} </span>
+                    </span>
+                </span></p>       
                 {{#if ../logged_in}}<p class="card-text"><span class="text-dark">{{product.stock}}</span> in stock</p>{{/if}}            
-            <p class="card-text">Category : {{product.category.category_name}}</p>  
-                    {{#if ../logged_in}} 
-          <div class="text-center" >
-            <button class="btn btn-sm btn-danger" type="button"  data-delete="{{product.id}}">Remove From Database</button>
-          </div>        
-        {{/if}}  
+                <p class="card-text">Category : {{product.category.category_name}}</p>  
+                {{#if ../logged_in}} 
+                    <div class="text-center" >
+                        <button class="btn btn-sm btn-danger" type="button"  data-delete="{{product.id}}">Remove From Database</button>
+                    </div>        
+                {{/if}}  
+            </div>
         </div>
     </div>
+    {{/if}}
+    {{/each}}
 </div>
-{{/if}}
-{{/each}}
-</div>
+<script src="/js/delete.js"></script>
