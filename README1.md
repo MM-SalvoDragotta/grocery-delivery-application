@@ -11,8 +11,8 @@
 <summary><h2>Table of Contents</h2></summary>
 
 - [Description](#description)
-- [User Story](#user Story)
-- [Acceptance Criteria](#acceptance Criteria)
+- [User Story](#user)
+- [Acceptance Criteria](#acceptance)
 - [Mock-Up](#mock-up)
 - [License](#license)
 - [Authors](#authors)
