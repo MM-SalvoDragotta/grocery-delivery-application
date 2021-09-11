@@ -28,6 +28,7 @@ This project is for an online department store customer and admin side. All item
 The application runs a RESTful API to retreive or create data from it's database.
 The application is displayed with both front-end and back-end models, with authentification needed for the back-end (admin) side.
 The application uses Node.js, Express.js, Handlebars.js, MySQL, Sequelize ORM, Multer OOP, Heroku.   
+```
 
 ----
 
@@ -46,6 +47,7 @@ SO THAT I can have up-to-date prices and inventory for customers online.
 ```md
 Admin-story
 Customer-story
+```
 
 ----
 
