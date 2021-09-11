@@ -11,9 +11,8 @@
 <summary><h2>Table of Contents</h2></summary>
 
 - [Description](#description)
-- [Application](#application)
-- [User Story](#userstory)
-- [Acceptance Criteria](#criteria)
+- [User Story](#user Story)
+- [Acceptance Criteria](#acceptance Criteria)
 - [Mock-Up](#mock-up)
 - [License](#license)
 - [Authors](#authors)
@@ -32,7 +31,7 @@ The application uses Node.js, Express.js, Handlebars.js, MySQL, Sequelize ORM, M
 
 ----
 
-## User Story
+## User Story 
 
 ```md
 As A owner of a grocery store
