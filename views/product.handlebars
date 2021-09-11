@@ -24,8 +24,12 @@
           </datalist>
       </div>
       <div class="form-check">
+        {{#if isSpecial}}
+        <input type="checkbox" class="form-check-input" id="special" checked="checked">
+        {{else}}
         <input type="checkbox" class="form-check-input" id="special">
-        <label class="form-check-label" for="special">Special?</label>
+        {{/if}}
+        <label class="form-check-label" for="special">Special?</label> 
      </div>
       <div class="form-group">
         <label>Upload Product Picture</label>
