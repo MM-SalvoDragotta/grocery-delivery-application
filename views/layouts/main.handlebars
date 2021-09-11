@@ -16,18 +16,24 @@
     <div class="header justify-center">
     <header class="align-center just p-2">
       <h1 class="">        
-        <a href="/">Welcome To Food Store</a>
+        <a href="/">
+            <span style="color:#FF0000">Welcome</span>
+            <span style="color:#66CC66">to</span>
+            <span style="color:#FF9966">Fresh</span>
+            <span style="color:#FFCCCC">Food</span>
+            <span style="color:#FF0066">Marketplace</span>        
+        </a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
-        <a href="/category">Products By Category</a> |
+        <a class = "navigation" href="/category">Products By Category</a> |
         {{#if logged_in}}
-        <a href="/">Product On Special</a> |
-        <a href="/createcategory">Create New Category</a> |
-        <a href="/createproduct">Create New Product</a> |
-        <button class="no-button" id="logout">Logout</button>
+        <a class = "navigation" href="/">Product On Special</a> |
+        <a class = "navigation" href="/createcategory">Create New Category</a> |
+        <a class = "navigation" href="/createproduct">Create New Product</a> |
+        <button class = "navigation" class="no-button" id="logout">Logout</button>
         {{else}}
-        <a href="/login">Login</a>
+        <a class = "navigation" href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
