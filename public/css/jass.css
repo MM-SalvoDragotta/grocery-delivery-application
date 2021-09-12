@@ -427,7 +427,7 @@ a {
 a:hover {
   color: #FF0000;
   text-decoration: underline;
-  font-size: 1.5rem ;
+  /* font-size: 1.5rem ; */
 }
 
 /* HEIGHT / WIDTH UTILS */
