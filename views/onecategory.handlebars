@@ -9,8 +9,8 @@
   </div>
   <div class="row col-9 prolist">
     {{#if logged_in}}
-    <h3 class="col-lg-6 one-cat">{{category_name}}</h3>
-    <div class="col-lg-6 one-cat">
+    <h3 class="col-lg-6">{{category_name}}</h3>
+    <div class="col-lg-6 mb-1">
       <input class="cate-input" type="text" placeholder="Update Name" id="cate-name" data-cate="{{id}}" />
       <button class="btn btn-sm btn-primary" id="cate-up" type="button">Update</button>
       <button class="btn btn-sm btn-danger" id="cate-del" type="button">Delete</button>
@@ -44,7 +44,7 @@
           {{#if ../logged_in}}
             <p class="card-text"><span class="text-dark">{{product.stock}}</span> in stock</p>
           {{/if}}            
-            <p class="card-text">Category : {{product.category.category_name}} </p> 
+            {{!-- <p class="card-text">Category : {{product.category.category_name}} </p>  --}}
           {{#if ../logged_in}} 
             <div class="text-center" >
               <button class="btn btn-sm btn-danger" type="button"  data-delete="{{product.id}}">Remove From Database</button>

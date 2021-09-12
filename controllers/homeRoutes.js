@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: Category,
+          required: false,
           attributes: ['category_name'],
         },
       ],
@@ -36,11 +37,16 @@ router.get('/login', (req, res) => {
 
 router.get('/category', async (req, res) => {
   try {
-    const cateData = await Category.findAll({});
+    const cateData = await Category.findAll({
+      order :[
+      [ 'category_name' , 'ASC'],
+      ],
+    });
     const productData = await Product.findAll({
       include: [
         {
           model: Category,
+          required: false,
           attributes: ['category_name'],
         },
       ],
@@ -61,7 +67,11 @@ router.get('/category', async (req, res) => {
 
 router.get('/category/:id', async (req, res) => {
   try {
-    const cateData = await Category.findAll({});
+    const cateData = await Category.findAll({
+      order :[
+        [ 'category_name' , 'ASC'],
+        ],
+    });
 
     const onecateData = await Category.findByPk(req.params.id,{
       include: [

@@ -9,6 +9,7 @@ ul {
 .prolist{
   border: 2.5px solid black;
   background-color:whitesmoke;
+  align-content: flex-start;
 }
 .card-header{
   min-height: 40px;
