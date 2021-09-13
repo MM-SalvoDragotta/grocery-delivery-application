@@ -22,12 +22,14 @@
 
 ## Description
 
-`md
-This project is for an online department store customer and admin side. All items are listed on the website, with their quantities and prices. The admin can change stock, prices, delete products, add products and show current promotions. 
+```md
+This project is for an online department store customer and admin side. 
+All items are listed on the website, with their quantities and prices. 
+The admin can change stock, prices, delete products, add products and show current promotions. 
 The application runs a RESTful API to retreive or create data from it's database.
 The application is displayed with both front-end and back-end models, with authentification needed for the back-end (admin) side.
 The application uses Node.js, Express.js, Handlebars.js, MySQL, Sequelize ORM, Heroku.   
-`
+```
 
 ----
 
@@ -44,8 +46,16 @@ SO THAT I can have up-to-date prices and inventory for customers online.
 ## Acceptance Criteria
 
 ```md
-Admin-story
-Customer-story
+GIVEN I am an admin for grocery story business
+WHEN I load the application, I am presented with a list of catagories with products on our inventory
+WHEN I select a product, I am sent to a authenification screen.
+THEN I am able to log-in as a user.
+IF I am not a admin I can create a user sign-up.
+THEN I am able to make changes to changes to the inventory data types and see stock counts.
+WHEN I select a product
+THEN I can change the price, inventory, special, image, category and delete entirely.
+WHEN I select the create new category.
+THEN I am able to create a new category for products
 ```
 
 ----
@@ -54,7 +64,7 @@ Customer-story
 
 The following animation shows the web application's appearance and functionality:
 
-![Grocery Delivery Application]()
+![Grocery Delivery Application](https://github.com/MM-SalvoDragotta/grocery-delivery-application/blob/main/public/images/demo.gif)
 
 You can view the deployed App at this link. [Grocery Delivery Application](https://store-back-end-deployed.herokuapp.com/)
 
